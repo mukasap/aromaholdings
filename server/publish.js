@@ -4,7 +4,7 @@ Meteor.publish('allDepartments', function(){
 	return Departments.find();
 });
 
-Meteor.publish('singleDepartments', function(id){
+Meteor.publish('singleDepartment', function(id){
 	//role based security
 	return Departments.findOne({_id: id});
 });
@@ -87,6 +87,17 @@ Meteor.publish('singleTip', function(id){
 Meteor.publish('randomTip', function(id){
 	//get random ID by section
 	return Tips.findOne({_id: id});
+});
+
+//feedback
+Meteor.publish('allFeedback', function(){
+	//role based security
+	return Feedback.find({});
+});
+
+Meteor.publish('singleFeedback', function(id){
+	//role based security
+	return Feedback.findOne({_id: id});
 });
 
 Meteor.publish('images', function(){

@@ -21,4 +21,8 @@ UI.registerHelper('currentDate', function() {
   return moment(new Date()).format("DD/MM/YYYY");
 });
 
+UI.registerHelper('currentRoute', function(route){
+  return Router.current().route.getName() === route;
+});
+
 
