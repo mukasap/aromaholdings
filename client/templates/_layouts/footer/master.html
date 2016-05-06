@@ -1,0 +1,15 @@
+<template name="footer_master">
+	<footer class="main-footer">
+        <div class="container">
+          <div class="pull-right hidden-xs">
+            <small>Design by <b>binary soup</b></small>
+          </div>
+          <strong>Copyright &copy; 2016-2017 <a href="#">Company</a>.</strong> All rights reserved.
+           {{#if currentUser}}
+              | <a href="#" class="logout">Logout</a>
+            {{else}}
+              | <a href="/login">Login</a>
+            {{/if}}   
+        </div><!-- /.container -->
+      </footer>
+</template>

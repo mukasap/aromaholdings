@@ -1,0 +1,11 @@
+<template name="dashboard" class="hold-transition skin-blue fixed sidebar-mini">
+	<div class="wrapper">
+		{{> header_dashboard}}
+     	{{> sidebar_dashboard}}      
+      <div class="content-wrapper" style="min-height: 921px;">
+      	{{> flashMessages}}
+       	{{> Template.dynamic template=main}}
+      </div>
+      	{{> footer_dashboard}}     
+    </div>
+</template>

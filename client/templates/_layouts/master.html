@@ -1,0 +1,23 @@
+<body>
+
+</body>
+<template name="master">
+	<div class="wrapper">
+		{{> header_master}}
+		<div class="content-wrapper">
+			<section class="content">
+				{{> flashMessages}}
+				<div class="row">
+					<div class="col-md-9">			
+						{{> Template.dynamic template=main}}	
+					</div>
+					<div class="col-md-3">
+						{{> sidebar}}
+					</div>
+				</div>
+			</section>
+	                
+	        {{> footer_master}}
+        </div>		
+	</div>	
+</template>

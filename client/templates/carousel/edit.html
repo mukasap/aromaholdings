@@ -1,0 +1,62 @@
+<template name="carouselEdit">
+	<section class="content-header">
+          <h1>
+            Aroma Holdings
+            <small>Control Panel</small>
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="/admin"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="/admin/carousel">Carousel</a></li>
+            <li class="active">Edit</li>
+          </ol>
+    </section>
+    <section class="content">
+		<div class="box box-info">
+            <div class="box-header with-border">
+              <h3 class="box-title">Carousels <small>(Edit)</small></h3>
+              <div class="box-tools pull-right">
+                <a href="/admin/carousel" class="btn btn-default btn-sm" ><i class="fa fa-arrow-left"></i> List </a>
+              </div>
+            </div>
+            <div class="box-body">
+                <div class="col-md-8">
+                    {{> quickForm collection="Carousel" id="updateCarousel" doc=carousel type="update" omitFields="updatedAt, images, slug"}}
+                </div>
+                <div class="col-md-4">
+                    <form class="upload">
+
+                            <div class="form-group">
+                                <label for="name">Image</label>
+                                <input type="file" name="image" id="image" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Caption </label>
+                                <input type="text" name="caption" class="form-control">
+                            </div>
+                            <button class="btn btn-primary btn-sm">Submit</button>
+                        </form>
+
+                    {{#if carousel.images}}
+                        {{#each carousel.images}}
+                            <div class="col-md-6"> 
+                        <a href="#" class="btn  btn-default btn-xs pull-right remove-image">Remove</a>
+                        <img src="{{image}}" alt="" class="img-responsive thumbnail">
+                            </div>
+                        {{/each}}
+
+                    {{else}}
+                        <strong>No Slides Added yet</strong>
+                    {{/if}}
+                </div>
+                
+            </div>
+            <div class="box-footer">
+                <span class="text-muted">
+            		<i class="fa fa-clock-o"></i> 
+            		<small>{{currentDate}}</small>
+            	</span>
+            	<a href="/" class="pull-right"><small>Aroma Holdings | Home</small></a>
+            </div>
+        </div>
+	</section>
+</template>

@@ -1,0 +1,66 @@
+<template name="staff">
+	<div class="box box-widget">
+        <div class="box-header with-border">
+          <div class="user-block">
+            <!-- <img class="img-circle" src="../dist/img/user1-128x128.jpg" alt="user image"> -->
+            <span class="username"><a href="/staff">Our Team</a></span>
+            <!-- <span class="description">Shared publicly - 7:30 PM Today</span> -->
+          </div><!-- /.user-block -->
+        </div><!-- /.box-header -->
+        <div class="box-body">
+         	<div class="row">     
+		     {{#each staff}}
+		        <div class="col-md-4 col-sm-6">
+		          <div class="box box-primary">
+		            <div class="box-body box-profile">
+		              <img class="img-responsive" src="{{image}}" alt="User profile picture">
+		              <h3 class="profile-username text-center">{{name}}</h3>
+		              <p class="text-muted text-center">{{title}}</p>
+		             {{truncate body 100}}
+		              <a href="/staff/{{_id}}" class="btn btn-primary btn-block"><b>Details</b></a>
+		            </div><!-- /.box-body -->
+		          </div>
+		        </div>
+		      {{/each}}
+		    </div>
+        </div><!-- /.box-body -->
+        <div class="box-footer">
+          <p class="text-muted">
+            <small>Please take a moment to browse the site, if you need any further information then please contact us on: <a href="#">info@aromaholdings.com</a></small>
+          </p>
+        </div><!-- /.box-footer -->
+    </div>
+</template>
+
+<template name="staffShow">
+	{{#with staff}}
+	<div class="box box-widget">
+        <div class="box-header with-border">
+          <div class="user-block">
+            <!-- <img class="img-circle" src="../dist/img/user1-128x128.jpg" alt="user image"> -->
+            <span class="username"><a href="/staff">{{name}}</a></span>
+            <span class="description">{{title}}</span>
+          </div><!-- /.user-block -->
+        </div><!-- /.box-header -->
+        <div class="box-body">
+          <img class="thumbnail img-responsive pad" src="{{image}}" alt="Photo">
+          <div class="col-md-10">
+          <h3 class="text-muted">About Me</h3>
+          {{bio}}
+          {{#if experience}}
+          <h3 class="text-muted">Experience</h3>
+          {{experience}}
+          {{/if}}
+          <h3 class="text-muted">Location</h3>
+          {{location}}
+          </div>
+          
+        </div><!-- /.box-body -->
+        <div class="box-footer">
+          <p class="text-muted">
+            <small>Please take a moment to browse the site, if you need any further information then please contact us on: <a href="#">info@aromaholdings.com</a></small>
+          </p>
+        </div><!-- /.box-footer -->
+    </div>
+    {{/with}}
+</template>

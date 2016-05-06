@@ -1,0 +1,33 @@
+<template name="departmentAdd">
+	<section class="content-header">
+          <h1>
+            Aroma Holdings
+            <small>Control Panel</small>
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="/admin"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="/admin/departments">Departments</a></li>
+            <li class="active">Add</li>
+          </ol>
+    </section>
+    <section class="content">
+		<div class="box box-info">
+            <div class="box-header with-border">
+              <h3 class="box-title">Departments <small>(Add New)</small></h3>
+              <div class="box-tools pull-right">
+                <a href="/admin/departments" class="btn btn-default btn-sm" ><i class="fa fa-arrow-left"></i> List </a>
+              </div>
+            </div>
+            <div class="box-body">
+                {{> quickForm collection="Departments" id="insertDepartment" type="insert" omitFields="updatedAt, services, slug"}}
+            </div>
+            <div class="box-footer">
+                <span class="text-muted">
+            		<i class="fa fa-clock-o"></i> 
+            		<small>{{currentDate}}</small>
+            	</span>
+            	<a href="/" class="pull-right"><small>Aroma Holdings | Home</small></a>
+            </div>
+        </div>
+	</section>
+</template>

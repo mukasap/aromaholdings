@@ -1,0 +1,1 @@
+Session.setDefault('AppTitle', 'Aroma Holdings');

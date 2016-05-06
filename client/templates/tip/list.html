@@ -1,0 +1,61 @@
+<template name="tipList">
+	<section class="content-header">
+          <h1>
+            Aroma Holdings
+            <small>Control Panel</small>
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="/admin"><i class="fa fa-dashboard"></i> Home</a></li>
+            <!-- <li><a href="#">UI</a></li> -->
+            <li class="active">Tip</li>
+          </ol>
+    </section>
+	<section class="content">
+		<div class="box box-info">
+            <div class="box-header with-border">
+              <h3 class="box-title">Tips of the Day <small>(List all)</small></h3>
+              <div class="box-tools pull-right">
+                <a href="/admin/tip/add" class="btn btn-primary btn-sm" ><i class="fa fa-plus-circle"></i> Add</a>
+              </div>
+            </div>
+            <div class="box-body">
+                {{#if Template.subscriptionsReady}}
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>Service</th>
+								<th>tip</th>
+								<th>Updated</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							{{#each tip}}
+							<tr>
+								<td>{{service}}</td>
+								<td>{{tip}}</td>
+								<td>{{prettyDate updatedAt 'long'}}</td>
+								<td>
+									<a href="/admin/tip/{{_id}}/edit" class="btn btn-default btn-sm">Edit</a>
+									<a href="#" class="btn btn-default btn-sm delete">Delete</a>
+								</td>
+							</tr>
+							{{else}}
+								<h3>No Feedback</h3>
+							{{/each}}
+						</tbody>
+					</table>
+				{{else}}
+					<h3>Loading....</h3>
+				{{/if}}
+            </div>
+            <div class="box-footer">
+            	<span class="text-muted">
+            		<i class="fa fa-clock-o"></i> 
+            		<small>{{currentDate}}</small>
+            	</span>
+            	<a href="/" class="pull-right"><small>Aroma Holdings | Home</small></a>
+            </div>
+        </div>
+	</section>
+</template>

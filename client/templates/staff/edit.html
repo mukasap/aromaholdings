@@ -1,0 +1,52 @@
+<template name="staffEdit">
+	<section class="content-header">
+          <h1>
+            Aroma Holdings
+            <small>Control Panel</small>
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="/admin"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="/admin/staff">Staff</a></li>
+            <li class="active">Edit</li>
+          </ol>
+    </section>
+    <section class="content">
+		<div class="box box-info">
+            <div class="box-header with-border">
+              <h3 class="box-title">Staffs <small>(Edit)</small></h3>
+              <div class="box-tools pull-right">
+                <a href="/admin/staff" class="btn btn-default btn-sm" ><i class="fa fa-arrow-left"></i> List </a>
+              </div>
+            </div>
+            <div class="box-body">
+                <div class="col-md-8">
+                    {{> quickForm collection="Staff" id="updateStaff" doc=staff type="update" omitFields="updatedAt, image, meta, slug"}}
+                </div>
+                <div class="col-md-4">
+
+                    {{#if staff.image}}
+                        <label>Image</label>
+                        <a href="#" class="btn  btn-default btn-xs pull-right remove-image">Remove</a>
+                        <img src="{{staff.image}}" alt="" class="img-responsive thumbnail">
+
+                    {{else}}
+                        <form class="upload">
+                            <div class="form-group">
+                                <label for="name">Image</label>
+                                <input type="file" name="image" id="image" class="form-control">
+                            </div>
+                        </form>
+                    {{/if}}
+                </div>
+                
+            </div>
+            <div class="box-footer">
+                <span class="text-muted">
+            		<i class="fa fa-clock-o"></i> 
+            		<small>{{currentDate}}</small>
+            	</span>
+            	<a href="/" class="pull-right"><small>Aroma Holdings | Home</small></a>
+            </div>
+        </div>
+	</section>
+</template>
