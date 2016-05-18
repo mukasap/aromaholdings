@@ -33,5 +33,8 @@ Template.dashboard.onRendered(function(){
 Template.sidebar.helpers({
 	departments: function () {
 		return Departments.find();
+	},
+	services: function(){
+		return Services.find();
 	}
 });

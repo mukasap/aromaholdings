@@ -1,4 +1,4 @@
-<template name="serviceAdd">
+<template name="adminServicesAdd">
 	<section class="content-header">
           <h1>
             Aroma Holdings
@@ -15,11 +15,11 @@
             <div class="box-header with-border">
               <h3 class="box-title">Services <small>(Add New)</small></h3>
               <div class="box-tools pull-right">
-                <a href="/admin/services" class="btn btn-default btn-sm" ><i class="fa fa-arrow-left"></i> List </a>
+                <a href="{{pathFor 'admin.services'}}" class="btn btn-default btn-sm" ><i class="fa fa-arrow-left"></i> List </a>
               </div>
             </div>
             <div class="box-body">
-                {{> quickForm collection="Services" id="insertService" type="insert" omitFields="updatedAt, image, meta, slug"}}
+                {{> quickForm collection="Services" id="insertService" type="method" meteormethod="addService" omitFields="updatedAt, image, meta, slug"}}
             </div>
             <div class="box-footer">
                 <span class="text-muted">

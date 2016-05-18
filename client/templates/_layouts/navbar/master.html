@@ -3,13 +3,14 @@
         <nav class="navbar navbar-static-top">
           <div class="container">
             <div class="navbar-header">
-              <a href="#" class="navbar-brand"><b>{{AppTitle}}</b></a>
+              <a href="{{pathFor 'home'}}" class="navbar-brand"><b>{{AppTitle}}</b></a>
               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
                 <i class="fa fa-bars"></i>
               </button>
             </div>
           	<div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav pull-right">
+                <li><a href="/pages/about-us">About us</a></li>
                 {{#each pages}}
                 <li><a href="/page/{{_id}}">{{name}}</a></li>
                 {{/each}}
@@ -19,7 +20,7 @@
                   {{#if services}}
                   <ul class="dropdown-menu" role="menu">
                     {{#each services}}
-                        <li><a href="/services/{{_id}}">{{name}}</a></li>
+                        <li><a href="{{pathFor 'service.show'}}">{{name}}</a></li>
                       {{/each}}
                   </ul>
                   {{/if}}

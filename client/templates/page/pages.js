@@ -1,45 +1,13 @@
-Template.pageList.onCreated(function(){
-	var self = this;
-	self.autorun(function(){
-		self.subscribe('allPages');
-	});
-});
-
-
-Template.pageList.helpers({
-	pages: function () {
-		return Pages.find();
-	}
-});
-
-Template.pageList.events({
+Template.adminPages.events({
 	'click .delete': function () {
 		Pages.remove({_id: this._id});
 		return false;
 	}
 });
 
-//edit
-Template.pageEdit.onCreated(function(){
-	var self = this;
-	self.autorun(function(){
-		var id = FlowRouter.getParam('id');
-    self.subscribe('images');
-		self.subscribe('singlePage', id);
-
-	});
-});
-
-Template.pageEdit.helpers({
-	page: function () {
-		var id = FlowRouter.getParam('id');
-		return Pages.findOne({_id: id});
-	}
-});
-
-Template.pageEdit.events({
+Template.adminPagesEdit.events({
   'change [name=image]': function(){
-  	var id = FlowRouter.getParam('id');
+  	var id = this._id;
     var file = $('#image').get(0).files[0];
     if(file){
       fsFile = new FS.File(file);
@@ -53,7 +21,7 @@ Template.pageEdit.events({
     return false;
   },
   'click .remove-image': function(){
-  	var id = FlowRouter.getParam('id');
+  	var id = this._id;
   	var page = Pages.findOne({_id: id});
     //remove image 
     Images.remove({_id: page.meta.image_id});
@@ -66,14 +34,14 @@ Template.pageEdit.events({
 AutoForm.hooks({
 insertPage: {
     onSuccess: function () {
-      FlowRouter.go('admin.pages');
+      Router.go('admin.pages');
       FlashMessages.sendSuccess('Page Added');
       return false;
     }
   },
   updatePage: {
     onSuccess: function () {
-      FlowRouter.go('admin.pages');
+      Router.go('admin.pages');
       FlashMessages.sendSuccess('Page Updated');
       return false;
     }

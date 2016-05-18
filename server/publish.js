@@ -1,12 +1,19 @@
 //Departments
 Meteor.publish('allDepartments', function(){
 	//role based security
-	return Departments.find();
+	return Departments.find({}, {sort: {updatedAt: 1}});
+});
+
+Meteor.publish('homeDepartments', function(){
+	//role based security
+	return Departments.find({}, {limit: 3});
 });
 
 Meteor.publish('singleDepartment', function(id){
 	//role based security
-	return Departments.findOne({_id: id});
+	console.log(id);
+	return Departments.find({_id: id});
+
 });
 
 //Services
@@ -17,7 +24,12 @@ Meteor.publish('allServices', function(){
 
 Meteor.publish('singleService', function(id){
 	//role based security
-	return Services.findOne({_id: id});
+	return Services.find({_id: id});
+});
+
+Meteor.publish('slugService', function(slug){
+	//role based security
+	return Services.find({slug: slug});
 });
 //Services
 Meteor.publish('allCarousels', function(){
@@ -27,12 +39,12 @@ Meteor.publish('allCarousels', function(){
 
 Meteor.publish('singleCarousel', function(id){
 	//role based security
-	return Carousel.findOne({_id: id});
+	return Carousel.find({_id: id});
 });
 
-Meteor.publish('homeCarousel', function(id){
+Meteor.publish('homeCarousel', function(){
 	//role based security
-	return Carousel.findOne({name: 'home'});
+	return Carousel.find({name: 'home'});
 });
 
 //Pages
@@ -43,12 +55,17 @@ Meteor.publish('allPages', function(){
 
 Meteor.publish('singlePage', function(id){
 	//role based security
-	return Pages.findOne({_id: id});
+	return Pages.find({_id: id});
 });
 
-Meteor.publish('aboutPage', function(id){
+Meteor.publish('slugPage', function(slug){
 	//role based security
-	return Pages.findOne({slug: 'about-us'});
+	return Pages.find({slug: slug});
+});
+
+Meteor.publish('aboutPage', function(){
+	//role based security
+	return Pages.find({slug: 'about-us'});
 });
 
 //Staff
@@ -59,7 +76,7 @@ Meteor.publish('allStaff', function(){
 
 Meteor.publish('singleStaff', function(id){
 	//role based security
-	return Staff.findOne({_id: id});
+	return Staff.find({_id: id});
 });
 
 //Staff
@@ -68,25 +85,49 @@ Meteor.publish('allCallouts', function(){
 	return Callouts.find({}, {limit: 3});
 });
 
+Meteor.publish('homeCallouts', function(){
+	//role based security
+	return Callouts.find({}, {limit: 3});
+});
+
 Meteor.publish('singleCallout', function(id){
 	//role based security
-	return Callouts.findOne({_id: id});
+	return Callouts.find({_id: id});
 });
 
 //tips
 Meteor.publish('allTips', function(){
 	//role based security
-	return Tips.find({}, {limit: 3});
+	return Tips.find({});
 });
 
 Meteor.publish('singleTip', function(id){
 	//role based security
-	return Tips.findOne({_id: id});
+	return Tips.find({_id: id});
 });
 
 Meteor.publish('randomTip', function(id){
 	//get random ID by section
-	return Tips.findOne({_id: id});
+	var random = _.sample(Tips.find().fetch());
+	// console.log(random)
+	return Tips.find({_id: random._id});
+});
+//banners
+Meteor.publish('allBanners', function(){
+	//role based security
+	return Banners.find({});
+});
+
+Meteor.publish('singleBanner', function(id){
+	//role based security
+	return Banners.find({_id: id});
+});
+
+Meteor.publish('randomBanner', function(id){
+	//get random ID by section
+	var random = _.sample(Banners.find().fetch());
+	// console.log(random)
+	return Banners.find({_id: random._id});
 });
 
 //feedback
@@ -97,7 +138,7 @@ Meteor.publish('allFeedback', function(){
 
 Meteor.publish('singleFeedback', function(id){
 	//role based security
-	return Feedback.findOne({_id: id});
+	return Feedback.find({_id: id});
 });
 
 Meteor.publish('images', function(){

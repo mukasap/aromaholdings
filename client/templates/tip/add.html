@@ -1,4 +1,4 @@
-<template name="tipAdd">
+<template name="adminTipsAdd">
 	<section class="content-header">
           <h1>
             Aroma Holdings
@@ -15,11 +15,11 @@
             <div class="box-header with-border">
               <h3 class="box-title">Tips of the Day <small>(Add New)</small></h3>
               <div class="box-tools pull-right">
-                <a href="/admin/tip" class="btn btn-default btn-sm" ><i class="fa fa-arrow-left"></i> List </a>
+                <a href="{{pathFor 'admin.tips'}}" class="btn btn-default btn-sm" ><i class="fa fa-arrow-left"></i> List </a>
               </div>
             </div>
             <div class="box-body">
-                {{> quickForm collection="Tips" id="insertTip" type="insert" omitFields="updatedAt, image, meta, slug"}}
+                {{> quickForm collection="Tips" id="insertTip" type="method" meteormethod="addTip" omitFields="updatedAt, image, meta, slug"}}
             </div>
             <div class="box-footer">
                 <span class="text-muted">

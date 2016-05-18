@@ -1,18 +1,26 @@
-<template name="pagesShow">
+<template name="departmentShow"> 
 	<div class="box box-solid box-primary">
-        <div class="box-header with-border">
-          <h4 class="box-title">{{title}}</h4>
+        <div class="box-header">
+          <h4 class="box-title">{{name}}</h4>
         </div><!-- /.box-header -->
         <div class="box-body">
           {{#if image}}
           <img class="thumbnail img-responsive pad" src="{{image}}" alt="Photo">
           {{/if}}          
-          {{{body}}}
+          {{{desc}}}    
+          {{#if services}} 
+            <h4>Services</h4>
+            <ul>
+              {{#each services}}
+                <li><a href="{{pathFor 'service.show'}}">{{name}}</a></li>
+              {{/each}}
+            </ul>              
+          {{/if}}   
         </div><!-- /.box-body -->
         <div class="box-footer">
           <p class="text-muted">
             <small>Please take a moment to browse the site, if you need any further information then please contact us on: <a href="#">info@aromaholdings.com</a></small>
           </p>
         </div><!-- /.box-footer -->
-    </div>
+    </div>    
 </template>

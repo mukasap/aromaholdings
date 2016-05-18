@@ -1,4 +1,4 @@
-<template name="feedbackList">
+<template name="adminFeedback">
 	<section class="content-header">
           <h1>
             Aroma Holdings
@@ -15,7 +15,7 @@
             <div class="box-header with-border">
               <h3 class="box-title">Feedback <small>(List all)</small></h3>
               <div class="box-tools pull-right">
-                <a href="/admin/pages/add" class="btn btn-primary btn-sm" ><i class="fa fa-plus-circle"></i> Add</a>
+                <a href="{{pathFor 'admin.feedback.add'}}" class="btn btn-primary btn-sm" ><i class="fa fa-plus-circle"></i> Add</a>
               </div>
             </div>
             <div class="box-body">
@@ -38,7 +38,7 @@
 								<td>{{message}}</td>
 								<td>{{prettyDate updatedAt 'long'}}</td>
 								<td>
-									<a href="/admin/feedback/{{_id}}/edit" class="btn btn-default btn-sm">Edit</a>
+									<a href="{{pathFor 'admin.feedback.edit'}}" class="btn btn-default btn-sm">Edit</a>
 									<a href="#" class="btn btn-default btn-sm delete">Delete</a>
 								</td>
 							</tr>

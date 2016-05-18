@@ -1,44 +1,13 @@
-Template.carouselList.onCreated(function(){
-	var self = this;
-	self.autorun(function(){
-		self.subscribe('allCarousels');
-	});
-});
-
-
-Template.carouselList.helpers({
-	services: function () {
-		return Carousel.find();
-	}
-});
-
-Template.carouselList.events({
+Template.adminCarousel.events({
 	'click .delete': function () {
-		Carousels.remove({_id: this._id});
+		Carousel.remove({_id: this._id});
 		return false;
 	}
 });
 
-//edit
-Template.carouselEdit.onCreated(function(){
-	var self = this;
-	self.autorun(function(){
-		var id = FlowRouter.getParam('id');
-		self.subscribe('singleCarousel', id);
-		self.subscribe('images');
-	});
-});
-
-Template.carouselEdit.helpers({
-	carousel: function () {
-		var id = FlowRouter.getParam('id');
-		return Carousel.findOne({_id: id});
-	}
-});
-
-Template.carouselEdit.events({
+Template.adminCarouselEdit.events({
   'submit .upload': function(e){
-  	var id = FlowRouter.getParam('id');
+  	var id = this._id;
     var caption = e.target.caption.value;
     var file = $('#image').get(0).files[0];
     if(file){
@@ -55,7 +24,7 @@ Template.carouselEdit.events({
     return false;
   },
   'click .remove-image': function(){
-    var id = FlowRouter.getParam('id');
+    var id = this._id;
     //update BUG!!!!
     Carousel.update({_id: id}, {'$pull': {images:  {_id: this._id}}});
     //remove image 
@@ -68,16 +37,16 @@ Template.carouselEdit.events({
 AutoForm.hooks({
 insertCarousel: {
     onSuccess: function () {
-       FlowRouter.go('admin.carousel');
+      this.event.preventDefault();
+      Router.go('admin.carousel');
       FlashMessages.sendSuccess('Carousel Added');
-      return false;
     }
   },
   updateCarousel: {
     onSuccess: function () {
-      FlowRouter.go('admin.carousel');
+      this.event.preventDefault();
+      Router.go('admin.carousel');
       FlashMessages.sendSuccess('Carousel Updated');
-      return false;
     }
   },
 });

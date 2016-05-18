@@ -1,92 +1,107 @@
 <template name="home">
 	<section class="content">
-		{{#with carousel}}
-		<div class="box box-solid">
-       <div class="box-header with-border">
-          <h3 class="box-title">{{heading}}</h3>
-        </div><!-- /.box-header -->
-        <div class="box-body">
-          <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-            
-            <ol class="carousel-indicators">
-            	{{#each images}}
-              <li data-target="#carousel-example-generic" data-slide-to="{{ @index }}"></li>
-              {{/each}}
-            </ol>
-            <div class="carousel-inner">
-              {{#each images}}
-              <div class="item {{#if @index '0'}}active{{/if}}">
-                <img src="{{image}}" alt="First slide">
-                <div class="carousel-caption">
-                  {{caption}}
-                </div>
-              </div>
-              {{/each}}                      
+  <!-- carousel -->
+  <div class="row">
+    {{#each carousel}}
+      <div class="col-md-12">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        
+        <ol class="carousel-indicators">
+          {{#each images}}
+          <li data-target="#carousel-example-generic" data-slide-to="{{ @index }}"></li>
+          {{/each}}
+        </ol>
+        <div class="carousel-inner">
+          {{#each images}}
+          <div class="item {{#if @index '0'}}active{{/if}}">
+            <img src="{{image}}" alt="First slide">
+            <div class="carousel-caption ">
+              <h3>{{caption}}</h3>
             </div>
-            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-              <span class="fa fa-angle-left"></span>
-            </a>
-            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-              <span class="fa fa-angle-right"></span>
-            </a>
           </div>
-        </div><!-- /.box-body -->
+          {{/each}}                      
+        </div>
+        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+          <span class="fa fa-angle-left"></span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+          <span class="fa fa-angle-right"></span>
+        </a>
       </div>
-		{{/with}}
-	</section>
-	<!-- services -->
-	<section class="content">
-		<div class="row centered">
-			{{#each callouts}}
-				<div class="col-md-4">
-					<i class="fa {{icon}} fa-5x text-aqua"></i>
-					<h4>{{title}}</h4>
-					<p>{{body}}</p>
-					<!-- <p><br><a href="#" class="btn btn-aqua">More Info</a></p> -->
-				</div>
-			{{/each}} 				 				
-	 </div>
+      </div>
+    {{/each}}
+  </div>
+  <hr>
+	<div class="row centered">
+		{{#each callouts}}
+			<div class="col-md-4">
+				<i class="fa {{icon}} fa-5x text-aqua"></i>
+				<h4>{{title}}</h4>
+				<p>{{body}}</p>
+				<!-- <p><br><a href="#" class="btn btn-aqua">More Info</a></p> -->
+			</div>
+		{{/each}} 				 				
+ </div>
    <!-- tips -->
    <div class="row bg-navy">
+      {{#each tip}}
       <blockquote class="pull-right">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-        <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+        <p>{{tip}}</p>
+        <small>{{title}}</small>
       </blockquote>
+      {{/each}}
    </div>
-   <!-- feedback -->
+   <hr>
+   <!-- about -->
+   <div class="row">
+    <div class="col-md-12">
+      {{#each about}}
+      <h4>{{title}}</h4>
+      {{{truncate body 460}}}
+      <br>
+      <a href="{{pathFor 'pages.show'}}" class="btn btn-primary pull-right">Read More</a>
+     {{/each}}
+    </div>    
+   </div>
+   <hr>
+   <!-- departments -->
+   <div class="row">
+     {{#each departments}}
+      <div class="col-md-4">
 
+      <div class="box box-success  box-solid">
+        <div class="box-header with-border">
+          <h4>{{name}}</h4>
+        </div><!-- /.box-header -->
+        <div class="box-body">
+          <p>{{{truncate desc 100}}}</p> <br>         
+        </div><!-- /.box-body -->
+        <div class="box-footer">
+          <a href="{{pathFor 'department.show'}}" class="btn btn-primary">Details</a>
+        </div><!-- /.box-footer -->
+    </div>
+    </div>
+     {{/each}}
+   </div>
+   <hr>
+   <!-- feedback -->
    <div class="row">
      <h4>Contact Us</h4>
-   <div class="box box-info">
-        <div class="box-header with-border">
-          <h3 class="box-title">Inquiries <small>(Our representitives are ready to help you)</small></h3>
-        </div>
-        <div class="box-body">
-            {{> quickForm collection="Feedback" id="insertInquiry" type="insert" omitFields="updatedAt"}}
-        </div>
-        <div class="box-footer">
-            <span class="text-muted">
-            <i class="fa fa-clock-o"></i> 
-            <small>{{currentDate}}</small>
-          </span>
-          <a href="/" class="pull-right"><small>Aroma Holdings | Home</small></a>
-        </div>
-    </div>
-   </div>
- 
-   
-	</section>
-  <!-- call outs -->
-  <section class="content">
-   
-  </section>
-	<!-- team -->
-	<section class="content">
-		
-
-	</section>
-	<section class="content">
-    
-		
+     <div class="box box-info">
+          <div class="box-header with-border">
+            <h3 class="box-title">Inquiries <small>(Our representitives are ready to help you)</small></h3>
+          </div>
+          <div class="box-body">
+              {{> quickForm collection="Feedback" id="insertInquiry" type="insert" omitFields="updatedAt, read"}}
+          </div>
+          <div class="box-footer">
+              <span class="text-muted">
+              <i class="fa fa-clock-o"></i> 
+              <small>{{currentDate}}</small>
+            </span>
+            <a href="/" class="pull-right"><small>Aroma Holdings | Home</small></a>
+          </div>
+      </div>
+   </div>   
 	</section>
 </template>

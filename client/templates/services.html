@@ -1,24 +1,18 @@
-<template name="serviceShow">
-  {{#with services}}
-	<div class="box box-widget">
-        <div class="box-header with-border">
-          <div class="user-block">
-            <span class="username"><a href="/services">{{name}}</a></span>
-            <span class="description">{{title}}</span>
-          </div><!-- /.user-block -->
+<template name="serviceShow"> 
+	<div class="box box-solid box-primary">
+        <div class="box-header">
+          <h4 class="box-title">{{name}}</h4>
         </div><!-- /.box-header -->
         <div class="box-body">
           {{#if image}}
           <img class="thumbnail img-responsive pad" src="{{image}}" alt="Photo">
           {{/if}}          
-          {{{desc}}}
-          
+          {{{desc}}}          
         </div><!-- /.box-body -->
         <div class="box-footer">
           <p class="text-muted">
             <small>Please take a moment to browse the site, if you need any further information then please contact us on: <a href="#">info@aromaholdings.com</a></small>
           </p>
         </div><!-- /.box-footer -->
-    </div>
-    {{/with}}
+    </div>    
 </template>

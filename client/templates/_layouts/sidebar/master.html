@@ -1,17 +1,37 @@
 <template name="sidebar">
-	<div class="box box-solid">
-                <div class="box-header with-border">
-                  <h3 class="box-title">Navigation</h3>
-                  <div class="box-tools">
-                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                  </div>
-                </div>
-                <div class="box-body no-padding">
-                  <ul class="nav nav-pills nav-stacked">
-                  	{{#each departments}}
-                    <li class=""><a href="/departments/{{_id}}">{{name}}</a></li>
-                    {{/each}}                    
-                  </ul>
-                </div><!-- /.box-body -->
-              </div>
+	<div class="box box-info box-solid">
+    <div class="box-header with-border">
+      <h3 class="box-title"><i class="fa fa-globe"></i> Navigation</h3>
+      <div class="box-tools">
+        <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+      </div>
+    </div>
+    <div class="box-body">
+      <ul class="nav nav-pills nav-stacked">
+        {{#each departments}}
+        <li class=""><a href="{{pathFor 'department.show'}}">{{name}}</a></li>
+        {{/each}}                    
+      </ul>
+    </div><!-- /.box-body -->
+  </div>
+
+  <div class="box box-success box-solid ">
+    <div class="box-header with-border">
+      <h3 class="box-title"><i class="fa fa-envelope-o"></i> Contact Us</h3>
+      <div class="box-tools">
+        <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+      </div>
+    </div>
+    <div class="box-body">
+      <p>Suite 3,  Larb House,<br>
+        Nkurumah Rd<br>
+        <!-- Off Kampala RD, Opp. Nkurumah Rd Police Station<br> -->
+        <!-- Next to Co-operative Alliance building.<br> -->
+        P.O. BOX 9207, Kampala<br>
+        Tel: +256 0392 159 519<br>
+        Email 1: <a>info@aromaholdings.co.ug</a><br>
+        Email 2: <a>jimlicia@gmail.com</a>
+        </p>
+    </div><!-- /.box-body -->
+  </div>
 </template>

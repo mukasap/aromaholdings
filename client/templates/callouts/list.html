@@ -1,4 +1,4 @@
-<template name="calloutList">
+<template name="adminCallouts">
 	<section class="content-header">
           <h1>
             Aroma Holdings
@@ -6,7 +6,7 @@
           </h1>
           <ol class="breadcrumb">
             <li><a href="/admin"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="/admin/callouts" class="active">Callouts</a></li>
+            <li><a href="{{pathFor 'admin.callouts'}}" class="active">Callouts</a></li>
             <!-- <li class="active">General</li> -->
           </ol>
     </section>
@@ -15,7 +15,7 @@
             <div class="box-header with-border">
               <h3 class="box-title">Callouts <small>(List all)</small></h3>
               <div class="box-tools pull-right">
-                <a href="/admin/callouts/add" class="btn btn-primary btn-sm" ><i class="fa fa-plus-circle"></i> Add</a>
+                <a href="{{pathFor 'admin.callouts.add'}}" class="btn btn-primary btn-sm" ><i class="fa fa-plus-circle"></i> Add</a>
               </div>
             </div>
             <div class="box-body">
@@ -38,7 +38,7 @@
 								<td><i class="fa {{icon}} fa-2x"></i></td>
 								<td>{{prettyDate updatedAt 'long'}}</td>
 								<td>
-									<a href="/admin/callouts/{{_id}}/edit" class="btn btn-default btn-sm">Edit</a>
+									<a href="{{pathFor 'admin.callouts.edit'}}" class="btn btn-default btn-sm">Edit</a>
 									<a href="#" class="btn btn-default btn-sm delete">Delete</a>
 								</td>
 							</tr>

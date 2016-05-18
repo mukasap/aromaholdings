@@ -1,4 +1,4 @@
-<template name="carouselEdit">
+<template name="adminCarouselEdit">
 	<section class="content-header">
           <h1>
             Aroma Holdings
@@ -15,12 +15,12 @@
             <div class="box-header with-border">
               <h3 class="box-title">Carousels <small>(Edit)</small></h3>
               <div class="box-tools pull-right">
-                <a href="/admin/carousel" class="btn btn-default btn-sm" ><i class="fa fa-arrow-left"></i> List </a>
+                <a href="{{pathFor 'admin.carousel'}}" class="btn btn-default btn-sm" ><i class="fa fa-arrow-left"></i> List </a>
               </div>
             </div>
             <div class="box-body">
                 <div class="col-md-8">
-                    {{> quickForm collection="Carousel" id="updateCarousel" doc=carousel type="update" omitFields="updatedAt, images, slug"}}
+                    {{> quickForm collection="Carousel" id="updateCarousel" doc=this type="method-update" meteormethod="editCarousel" omitFields="updatedAt, images, slug"}}
                 </div>
                 <div class="col-md-4">
                     <form class="upload">
@@ -36,8 +36,8 @@
                             <button class="btn btn-primary btn-sm">Submit</button>
                         </form>
 
-                    {{#if carousel.images}}
-                        {{#each carousel.images}}
+                    {{#if this.images}}
+                        {{#each this.images}}
                             <div class="col-md-6"> 
                         <a href="#" class="btn  btn-default btn-xs pull-right remove-image">Remove</a>
                         <img src="{{image}}" alt="" class="img-responsive thumbnail">

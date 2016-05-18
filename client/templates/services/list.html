@@ -1,4 +1,4 @@
-<template name="serviceList">
+<template name="adminServices">
 	<section class="content-header">
           <h1>
             Aroma Holdings
@@ -15,7 +15,7 @@
             <div class="box-header with-border">
               <h3 class="box-title">Services <small>(List all)</small></h3>
               <div class="box-tools pull-right">
-                <a href="/admin/services/add" class="btn btn-primary btn-sm" ><i class="fa fa-plus-circle"></i> Add</a>
+                <a href="{{pathFor 'admin.services.add'}}" class="btn btn-primary btn-sm" ><i class="fa fa-plus-circle"></i> Add</a>
               </div>
             </div>
             <div class="box-body">
@@ -36,7 +36,7 @@
 								<td>{{truncate desc 50}}</td>
 								<td>{{prettyDate updatedAt 'long'}}</td>
 								<td>
-									<a href="/admin/services/{{_id}}/edit" class="btn btn-default btn-sm">Edit</a>
+									<a href="{{pathFor 'admin.services.edit'}}" class="btn btn-default btn-sm">Edit</a>
 									<a href="#" class="btn btn-default btn-sm delete">Delete</a>
 								</td>
 							</tr>

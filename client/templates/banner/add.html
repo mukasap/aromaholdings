@@ -1,4 +1,4 @@
-<template name="adminPageAdd">
+<template name="adminBannersAdd">
 	<section class="content-header">
           <h1>
             Aroma Holdings
@@ -6,20 +6,20 @@
           </h1>
           <ol class="breadcrumb">
             <li><a href="/admin"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="{{pathFor 'admin.pages'}}">Pages</a></li>
+            <li><a href="{{pathFor 'admin.banners'}}">Banner</a></li>
             <li class="active">Add</li>
           </ol>
     </section>
     <section class="content">
 		<div class="box box-info">
             <div class="box-header with-border">
-              <h3 class="box-title">Pages <small>(Add New)</small></h3>
+              <h3 class="box-title">Banner <small>(Add New)</small></h3>
               <div class="box-tools pull-right">
-                <a href="{{pathFor 'admin.pages'}}" class="btn btn-default btn-sm" ><i class="fa fa-arrow-left"></i> List </a>
+                <a href="{{pathFor 'admin.banners'}}" class="btn btn-default btn-sm" ><i class="fa fa-arrow-left"></i> List </a>
               </div>
             </div>
             <div class="box-body">
-                {{> quickForm collection="Pages" id="insertPage" type="method" meteormethod="addPage" omitFields="updatedAt, image, meta, slug"}}
+                {{> quickForm collection="Banners" id="insertBanner" type="method" meteormethod="addBanner" omitFields="updatedAt, image, meta, slug"}}
             </div>
             <div class="box-footer">
                 <span class="text-muted">

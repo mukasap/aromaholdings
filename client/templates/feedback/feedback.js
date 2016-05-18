@@ -1,39 +1,7 @@
-Template.feedbackList.onCreated(function(){
-	var self = this;
-	self.autorun(function(){
-		self.subscribe('allFeedback');
-	});
-});
-
-
-Template.feedbackList.helpers({
-	feedback: function () {
-		return Feedback.find();
-	}
-});
-
-Template.feedbackList.events({
+Template.adminFeedback.events({
 	'click .delete': function () {
 		Feedback.remove({_id: this._id});
 		return false;
-	}
-});
-
-//edit
-Template.feedbackEdit.onCreated(function(){
-	var self = this;
-	self.autorun(function(){
-		var id = FlowRouter.getParam('id');
-    self.subscribe('images');
-		self.subscribe('singleFeedback', id);
-
-	});
-});
-
-Template.feedbackEdit.helpers({
-	feedback: function () {
-		var id = FlowRouter.getParam('id');
-		return Feedback.findOne({_id: id});
 	}
 });
 
@@ -46,14 +14,14 @@ insertInquiry: {
   },
   insertFeedback: {
     onSuccess: function () {
-      FlowRouter.go('admin.feedbacks');
+      Router.go('admin.feedback');
       FlashMessages.sendSuccess('Feedback Added');
       return false;
     }
   },
   updateFeedback: {
     onSuccess: function () {
-      FlowRouter.go('admin.feedbacks');
+      Router.go('admin.feedback');
       FlashMessages.sendSuccess('Feedback Updated');
       return false;
     }

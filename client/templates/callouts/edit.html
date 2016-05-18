@@ -1,4 +1,4 @@
-<template name="calloutEdit">
+<template name="adminCalloutsEdit">
     <section class="content-header">
           <h1>
             Aroma Holdings
@@ -6,7 +6,7 @@
           </h1>
           <ol class="breadcrumb">
             <li><a href="/admin"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="/admin/callouts">Callouts</a></li>
+            <li><a href="{{pathFor 'admin.callouts'}}">Callouts</a></li>
             <li class="active">Edit</li>
           </ol>
     </section>
@@ -15,11 +15,11 @@
             <div class="box-header with-border">
               <h3 class="box-title">Callouts <small>(Edit)</small></h3>
               <div class="box-tools pull-right">
-                <a href="/admin/callouts" class="btn btn-default btn-sm" ><i class="fa fa-arrow-left"></i> List </a>
+                <a href="{{pathFor 'admin.callouts'}}" class="btn btn-default btn-sm" ><i class="fa fa-arrow-left"></i> List </a>
               </div>
             </div>
             <div class="box-body">
-                {{> quickForm collection="Callouts" id="updateCallout" doc=callout type="update" omitFields="updatedAt"}}                
+                {{> quickForm collection="Callouts" id="updateCallout" doc=this type="method-update" meteormethod="editCallout" omitFields="updatedAt"}}                
             </div>
             <div class="box-footer">
                 <span class="text-muted">

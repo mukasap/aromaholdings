@@ -1,5 +1,4 @@
 <template name="adminDepartmentsEdit">
-  {{this}}
 	<section class="content-header">
           <h1>
             Aroma Holdings
@@ -16,11 +15,11 @@
             <div class="box-header with-border">
               <h3 class="box-title">Departments  <small>(Edit)</small></h3>
               <div class="box-tools pull-right">
-                <a href="/admin/departments" class="btn btn-default btn-sm" ><i class="fa fa-arrow-left"></i> List </a>
+                <a href="{{pathFor 'admin.departments'}}" class="btn btn-default btn-sm" ><i class="fa fa-arrow-left"></i> List </a>
               </div>
             </div>
             <div class="box-body">
-                {{> quickForm collection="Departments" id="updateDepartment" doc=this type="update" omitFields="updatedAt, services, slug"}}
+                {{> quickForm collection="Departments" id="updateDepartment" doc=this type="method-update" meteormethod="editDepartment" omitFields="updatedAt, services, slug"}}
             </div>
             <div class="box-footer">
                 <span class="text-muted">
