@@ -33,7 +33,7 @@
 							{{#each banners}}
 							<tr>
 								<td>{{name}}</td>
-								<td>{{image}}</td>
+								<td>{{#if image}} <img src="{{image}}" alt="" style="height: 25px">{{/if}}</td>
 								<td>{{prettyDate updatedAt 'long'}}</td>
 								<td>
 									<a href="{{pathFor 'admin.banners.edit'}}" class="btn btn-default btn-sm">Edit</a>
