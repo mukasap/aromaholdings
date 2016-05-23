@@ -1,1 +1,1 @@
-Session.setDefault('AppTitle', 'Aroma Holdings');
+Session.setDefault('AppTitle', 'Aroma Holdings Uganda');

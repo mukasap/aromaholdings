@@ -1,8 +1,10 @@
 Template.adminServices.events({
 	'click .delete': function () {
 		Services.remove({_id: this._id});
-    //remove image 
-    Images.remove({_id: service.meta.image_id});
+    //remove images 
+    if(this.image){
+      Images.remove({_id: this.image._id});
+    }    
 		return false;
 	}
 });
@@ -16,19 +18,17 @@ Template.adminServicesEdit.events({
       Images.insert(fsFile, function(err, result){
         if(!err){
           var image = '/cfs/files/Images/' + result._id;
-          Services.update({_id: id}, {'$set': {image: image, 'meta.image_id': result._id}});
+          Services.update({_id: id}, {'$set': {image: {_id: result._id, path: image}}});
         }
       });
     }
     return false;
   },
   'click .remove-image': function(){
-  	var id = this._id;
-  	var service = Services.findOne({_id: id});
-    //remove image 
-    Images.remove({_id: service.meta.image_id});
+  	//remove image 
+    Images.remove({_id: this.image._id});
     //update
-    Services.update({_id: id}, {'$set': {image: null, 'meta.image_id': null}});
+    Services.update({_id: this._id}, {'$set': {image: null}});
     return false;
   }
 });

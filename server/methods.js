@@ -7,25 +7,26 @@ Meteor.methods({
 	},
 	'addService': function(doc, docID){
 		Services.insert(doc, function(err, docId){
+			var service = Services.findOne({_id: docId});
 			//add meta data
 			Services.update({_id: docId}, {'$set': {'meta.department_id': doc.department}});
 			//push to department  
-      		Departments.update({_id: doc.department}, {'$addToSet': {services :{_id: docId, name: doc.name}}}); 
+      		Departments.update({_id: doc.department}, {'$addToSet': {services :{slug: service.slug, name: doc.name}}}); 
 		});
 	},
 	'editService': function(doc, docId){
 		Services.update({_id: docId}, doc);
 		var service = Services.findOne({_id: docId});
-		var new_department = doc.department;
-      	var old_department = service.meta.department_id;
-	    if(new_department != old_department){
-	        //remove from old dpt
-	        Departments.update({_id: old_department}, {'$pull': {services :{_id: docId, name: service.name}}}); 
-	        //set new service  meta.department_id
-	        Services.update({_id: this.docId}, {'$set': {'meta.department_id': service.department}});
-	        //push to new department  
-	        Departments.update({_id: service.department}, {'$addToSet': {services :{_id: docId, name: service.name}}}); 
-	    }
+		// var new_department = doc.department;
+      	// var old_department = service.meta.department_id;
+	    // if(new_department != old_department){
+	    //     //remove from old dpt
+	    //     Departments.update({_id: old_department}, {'$pull': {services :{slug: service.slug, name: service.name}}}); 
+	    //     //set new service  meta.department_id
+	    //     Services.update({_id: this.docId}, {'$set': {'meta.department_id': doc.department}});
+	    //     //push to new department  
+	    //     Departments.update({_id: service.department}, {'$addToSet': {services :{slug: service.slug, name: service.name}}}); 
+	    // }
 	},
 	'addCarousel': function(doc){
 		Carousel.insert(doc);

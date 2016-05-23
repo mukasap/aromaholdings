@@ -41,7 +41,11 @@ fortawesome:fontawesome
 
 accounts-base
 accounts-password
-useraccounts:unstyled
+useraccounts:iron-routing
+useraccounts:bootstrap
+alanning:roles
 raix:handlebar-helpers
 session
 
+udondan:slick
+#richsilv:owl-carousel

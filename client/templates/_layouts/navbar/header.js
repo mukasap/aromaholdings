@@ -1,6 +1,7 @@
-Template.header_master.events({
+Template.header_dashboard.events({
 	'click .logout': function () {
 		 AccountsTemplates.logout();
+		 return false;
 	}
 });
 

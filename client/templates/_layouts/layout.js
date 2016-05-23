@@ -30,11 +30,69 @@ Template.dashboard.onRendered(function(){
 	Session.set('AppTitle', 'Dashboard');
 });
 
+Template.sidebar.onCreated(function(){
+	this.subscribe('allDepartments');
+});
+
 Template.sidebar.helpers({
 	departments: function () {
 		return Departments.find();
-	},
-	services: function(){
-		return Services.find();
+	}
+});
+
+Template.mediumBanner.onCreated(function(){
+	this.subscribe('mediumBanner');
+});
+
+Template.mediumBanner.helpers({
+	banner: function(){
+		return Banners.find({type: 'medium'}, {limit: 1});
+	}
+});
+
+Template.departmentShow.onCreated(function(){
+	this.subscribe('wideBanner');
+});
+
+Template.departmentShow.helpers({
+	banner: function(){
+		return Banners.find({type: 'wide'}, {limit: 1});
+	}
+});
+
+Template.serviceShow.onCreated(function(){
+	this.subscribe('wideBanner');
+});
+
+Template.serviceShow.helpers({
+	banner: function(){
+		return Banners.find({type: 'wide'}, {limit: 1});
+	}
+});
+
+Template.serviceShow.onCreated(function(){
+	this.subscribe('wideBanner');
+});
+
+Template.serviceShow.helpers({
+	banner: function(){
+		return Banners.find({type: 'wide'}, {limit: 1});
+	}
+});
+
+Template.pagesShow.onCreated(function(){
+	this.subscribe('wideBanner');
+});
+
+Template.pagesShow.helpers({
+	banner: function(){
+		return Banners.find({type: 'wide'}, {limit: 1});
+	}
+});
+
+Template.footer_master.events({
+	'click .logout': function () {
+		AccountsTemplates.logout();
+		return false;
 	}
 });

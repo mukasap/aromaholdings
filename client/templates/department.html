@@ -5,7 +5,7 @@
         </div><!-- /.box-header -->
         <div class="box-body">
           {{#if image}}
-          <img class="thumbnail img-responsive pad" src="{{image}}" alt="Photo">
+            <img class="thumbnail img-responsive" src="{{image.path}}" alt="{{name}}">      
           {{/if}}          
           {{{desc}}}    
           {{#if services}} 
@@ -16,6 +16,13 @@
               {{/each}}
             </ul>              
           {{/if}}   
+         <p>&nbsp;</p>
+         <p class="text-center">
+          {{#each banner}}
+            <a href="/services/{{link}}"><img src="{{image.path}}" alt="" class=""></a>
+          {{/each}}
+         </p>
+          <hr>
         </div><!-- /.box-body -->
         <div class="box-footer">
           <p class="text-muted">

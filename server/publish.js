@@ -1,18 +1,24 @@
 //Departments
 Meteor.publish('allDepartments', function(){
 	//role based security
-	return Departments.find({}, {sort: {updatedAt: 1}});
+	return Departments.find({}, {sort: {order: 1, updatedAt: 1}});
 });
 
 Meteor.publish('homeDepartments', function(){
 	//role based security
-	return Departments.find({}, {limit: 3});
+	return Departments.find({}, {limit: 4});
 });
 
 Meteor.publish('singleDepartment', function(id){
 	//role based security
-	console.log(id);
+	
 	return Departments.find({_id: id});
+
+});
+
+Meteor.publish('slugDepartment', function(slug){
+	//role based security	
+	return Departments.find({slug: slug});
 
 });
 
@@ -109,8 +115,7 @@ Meteor.publish('singleTip', function(id){
 Meteor.publish('randomTip', function(id){
 	//get random ID by section
 	var random = _.sample(Tips.find().fetch());
-	// console.log(random)
-	return Tips.find({_id: random._id});
+	return Tips.find({_id: random && random._id});
 });
 //banners
 Meteor.publish('allBanners', function(){
@@ -123,12 +128,19 @@ Meteor.publish('singleBanner', function(id){
 	return Banners.find({_id: id});
 });
 
-Meteor.publish('randomBanner', function(id){
+Meteor.publish('wideBanner', function(id){
 	//get random ID by section
-	var random = _.sample(Banners.find().fetch());
-	// console.log(random)
-	return Banners.find({_id: random._id});
+	var random = _.sample(Banners.find({type: 'wide'}).fetch());
+	return Banners.find({_id: random && random._id});
 });
+
+Meteor.publish('mediumBanner', function(id){
+	//get random ID by section
+	var random = _.sample(Banners.find({type: 'medium'}).fetch());
+	return Banners.find({_id: random && random._id}, {limit: 1});
+});
+
+
 
 //feedback
 Meteor.publish('allFeedback', function(){

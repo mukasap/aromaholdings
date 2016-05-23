@@ -21,12 +21,10 @@ Template.adminStaffEdit.events({
     return false;
   },
   'click .remove-image': function(){
-  	var id = this._id;
-  	var staff = Staff.findOne({_id: id});
-    //remove image 
-    Images.remove({_id: staff.meta.image_id});
+  	//remove image 
+    Images.remove({_id: this.image._id});
     //update
-    Staff.update({_id: id}, {'$set': {image: null, 'meta.image_id': null}});
+    Staff.update({_id: this._id}, {'$set': {image: null}});
     return false;
   }
 });

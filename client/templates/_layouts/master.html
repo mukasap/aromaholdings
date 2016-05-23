@@ -7,15 +7,20 @@
 		<div class="content-wrapper">
 			<section class="content">
 				{{> flashMessages}}
-				<div class="row">
-					<div class="col-md-9">			
-						<!-- {{> Template.dynamic template=main}}	 -->
+				{{#if currentRoute 'atSignIn'}}
+					<div class="row">
 						{{> yield}}
 					</div>
-					<div class="col-md-3">
-						{{> sidebar}}
+				{{else}}
+					<div class="row">
+						<div class="col-md-9">			
+							{{> yield}}
+						</div>
+						<div class="col-md-3">
+							{{> sidebar}}
+						</div>
 					</div>
-				</div>
+				{{/if}}				
 			</section>
 	                
 	        {{> footer_master}}

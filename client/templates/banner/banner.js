@@ -1,6 +1,10 @@
 Template.adminBanners.events({
 	'click .delete': function () {
 		Banners.remove({_id: this._id});
+    //remove images 
+    if(this.image){
+      Images.remove({_id: this.image._id});
+    }   
 		return false;
 	}
 });
@@ -14,19 +18,17 @@ Template.adminBannersEdit.events({
       Images.insert(fsFile, function(err, result){
         if(!err){
           var image = '/cfs/files/Images/' + result._id;
-          Banners.update({_id: id}, {'$set': {image: image, 'meta.image_id': result._id}});
+          Banners.update({_id: id}, {'$set': {image: {_id: result._id, path: image}}});
         }
       });
     }
     return false;
   },
   'click .remove-image': function(){
-    var id = this._id;
-    var banner= Banners.findOne({_id: id});
     //remove image 
-    Images.remove({_id: banner.meta.image_id});
+    Images.remove({_id: this.image._id});
     //update
-    Banners.update({_id: id}, {'$set': {image: null, 'meta.image_id': null}});
+    Banners.update({_id: this._id}, {'$set': {image: null, 'meta.image_id': null}});
     return false;
   }
 });
