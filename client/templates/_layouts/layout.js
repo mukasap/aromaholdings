@@ -17,7 +17,7 @@ Template.header_dashboard.helpers({
 
 //master
 Template.master.onRendered(function(){
-	$('body').addClass('hold-transition skin-blue layout-top-nav');
+	$('body').addClass('hold-transition skin-red layout-top-nav');
 	$('body').removeClass('fixed sidebar-mini');
 	Session.set('AppTitle', 'Aroma Holdings');
 
