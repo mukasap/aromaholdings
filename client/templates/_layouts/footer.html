@@ -1,0 +1,13 @@
+<template name="footer">
+		<footer class="main-footer">
+			<div class="pull-right hidden-xs">
+				<small>Design by <b><a href="mailto:mukasap@gmail.com">mukasap</a></b>  <sup>Version 1.0</sup> </small>
+			</div>
+			&copy; <strong>{{company}}</strong> {{year}} All rights reserved.
+			{{#if currentUser}}
+				 | <a href="#" class="logout">Logout</a>
+			 {{else}}
+				 | <a href="/sign-in">Login</a>
+			 {{/if}}
+		</footer>
+</template>

@@ -1,0 +1,63 @@
+<template name="SidebarMaster">
+	<div class="box  box-solid">
+    <div class="box-header with-border bg-maroon">
+      <h3 class="box-title"><i class="fa fa-globe"></i> Navigation</h3>
+    </div>
+    <div class="box-body">
+      <ul class="nav nav-pills nav-stacked">
+        {{#each departments}}
+        <li class=""><a href="{{pathFor 'department.show'}}">{{name}}</a></li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+  <div class="box box-solid ">
+    <div class="box-header with-border bg-blue">
+      <h3 class="box-title"><i class="fa fa-envelope-o"></i> Contact Us</h3>
+    </div>
+    <div class="box-body">
+      <p>Suite 3,  Larb House,<br>
+        Nkurumah Rd<br>
+        P.O. BOX 9207, Kampala<br>
+        Tel: +256 0392 159 519<br>
+        <a href="mailto:info@aromaholdings.com">info@aromaholdings.com</a>
+        </p>
+    </div>
+  </div>
+  {{> Banner300}}
+</template>
+
+<template name="Banner300">
+  <div class="row centered">
+     {{#each banner}}
+      <a href="/services/{{link}}"><img src="{{image.path}}" alt="" class=""></a>
+    {{/each}}
+  </div>
+</template>
+
+<template name="SidebarDashboard">
+  <aside class="main-sidebar">
+    <section class="sidebar">
+      <ul class="sidebar-menu">
+        <li class="header">Company Management</li>
+        <!-- <li class="{{#if currentRoute 'admin.home'}}active{{/if}}">
+          <a href="{{pathFor 'admin.home'}}">
+            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+          </a>
+        </li> -->
+        <li class="{{#if currentRoute 'admin.departments'}}active{{/if}}"><a href="{{pathFor 'admin.departments'}}"><i class="fa fa-building"></i> Departments</a></li>
+        <li class="{{#if currentRoute 'admin.services'}}active{{/if}}"><a href="{{pathFor 'admin.services'}}"><i class="fa fa-gears"></i> Services</a></li>
+        <li class="{{#if currentRoute 'admin.staff'}}active{{/if}}"><a href="{{pathFor 'admin.staff'}}"><i class="fa fa-users"></i> Staff</a></li>
+				<li class="{{#if currentRoute 'admin.feedback'}}active{{/if}}"><a href="{{pathFor 'admin.feedback'}}"><i class="fa fa-commenting"></i> Feed Back (Inquires)</a></li>
+        <li class="header">Content Management</li>
+				<li class="{{#if currentRoute 'admin.carousel'}}active{{/if}}"><a href="{{pathFor 'admin.carousel'}}"><i class="fa fa-desktop"></i> Image Slider</a></li>
+				<li class="{{#if currentRoute 'admin.banners'}}active{{/if}}"><a href="{{pathFor 'admin.banners'}}"><i class="fa fa-image"></i> Banners</a></li>
+        <li class="{{#if currentRoute 'admin.pages'}}active{{/if}}"><a href="{{pathFor 'admin.pages'}}"><i class="fa fa-file-word-o"></i> Pages</a></li>
+        <li class="{{#if currentRoute 'admin.callouts'}}active{{/if}}"><a href="{{pathFor 'admin.callouts'}}"><i class="fa fa-comments-o"></i> Callouts</a></li>
+        <li class="{{#if currentRoute 'admin.tips'}}active{{/if}}"><a href="{{pathFor 'admin.tips'}}"><i class="fa fa-quote-right"></i> Tip of Day</a></li>
+        <li><a href="/change-password"><i class="fa fa-lock text-aqua"></i> <span>Change Password</span></a></li>
+        <li><a href="{{pathFor 'home'}}"><i class="fa fa-eye text-yellow"></i> <span>Preview Website</span></a></li>
+      </ul>
+    </section>
+  </aside>
+</template>

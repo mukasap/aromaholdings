@@ -1,0 +1,41 @@
+<body>
+
+</body>
+
+<template name="master">
+	<div class="wrapper">
+		{{> HeaderMaster}}
+		<div class="content-wrapper">
+			<section class="content">
+				{{> flashMessages}}
+				{{#if currentRoute 'atSignIn'}}
+					<div class="row">
+						{{> yield}}
+					</div>
+				{{else}}
+					<div class="row">
+						<div class="col-md-9">
+							{{> yield}}
+						</div>
+						<div class="col-md-3">
+							{{> SidebarMaster}}
+						</div>
+					</div>
+				{{/if}}
+			</section>
+      {{> footer company='Aroma Holdings' year='2016-2017'}}
+    </div>
+	</div>
+</template>
+
+<template name="dashboard">
+	<div class="wrapper">
+		{{> HeaderDashboard}}
+    {{> SidebarDashboard}}
+    <div class="content-wrapper" style="min-height: 921px;">
+    	{{> flashMessages}}
+     	{{> yield}}
+    </div>
+    {{> footer company='Aroma Holdings' year='2016-2017'}}
+    </div>
+</template>

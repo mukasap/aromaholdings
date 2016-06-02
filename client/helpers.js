@@ -13,16 +13,14 @@ UI.registerHelper('prettyDate', function(time, type) {
       return moment(time).format('MMMM D YYYY');
     //TODO: Add other types long etc
     default:
-      return moment(time).format("DD/MM/YYYY");
+      return moment(time).format("DD MMM YYYY");
   }
 });
 
 UI.registerHelper('currentDate', function() {
-  return moment(new Date()).format("DD/MM/YYYY");
+  return moment(new Date()).format("ddd DD MMM YYYY hh:mm a");
 });
 
 UI.registerHelper('currentRoute', function(route){
   return Router.current().route.getName() === route;
 });
-
-

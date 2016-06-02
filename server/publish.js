@@ -11,13 +11,13 @@ Meteor.publish('homeDepartments', function(){
 
 Meteor.publish('singleDepartment', function(id){
 	//role based security
-	
+
 	return Departments.find({_id: id});
 
 });
 
 Meteor.publish('slugDepartment', function(slug){
-	//role based security	
+	//role based security
 	return Departments.find({slug: slug});
 
 });
@@ -26,6 +26,11 @@ Meteor.publish('slugDepartment', function(slug){
 Meteor.publish('allServices', function(){
 	//role based security
 	return Services.find();
+});
+
+Meteor.publish('featuredServices', function(){
+	//role based security
+	return Services.find({featured: true});
 });
 
 Meteor.publish('singleService', function(id){
