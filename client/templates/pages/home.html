@@ -60,12 +60,12 @@
 					{{#each services}}
 						<div class="col-md-4">
 							 <div class="thumbnail">
-								 <img src="{{image.path}}" alt="{{name}}">
+								 <img src="{{thumbnail.path}}" alt="{{name}}">
 								 	<div class="caption bg-{{color}}">
 										 <h4>{{name}}</h4>
 										 <p>{{{truncate desc 120}}}</p>
 										 <p class="text-center">
-										 <a href="{{pathFor 'service.show'}}" class="btn btn-info btn-lg" role="button">Details</a>
+										 <a href="{{pathFor 'service.show'}}" class="btn btn-info btn-sm" role="button">Details</a>
 										 </p>
 								 </div>
 							 </div>

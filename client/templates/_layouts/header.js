@@ -8,6 +8,9 @@ Template.HeaderMaster.onCreated(function(){
 Template.HeaderMaster.helpers({
 	departments: function(){
 		return Departments.find({});
+	},
+	services: function(){
+		return Services.find({department: this._id});
 	}
 });
 

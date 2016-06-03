@@ -29,7 +29,6 @@ momentjs:moment
 aldeed:collection2
 aldeed:autoform
 mpowaga:autoform-summernote
-djedi:sanitize-html
 
 cfs:standard-packages
 cfs:gridfs
@@ -42,8 +41,6 @@ accounts-password
 useraccounts:iron-routing
 useraccounts:bootstrap
 alanning:roles
-raix:handlebar-helpers
-session
 
-udondan:slick
+session
 sacha:spin

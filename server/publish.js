@@ -11,7 +11,6 @@ Meteor.publish('homeDepartments', function(){
 
 Meteor.publish('singleDepartment', function(id){
 	//role based security
-
 	return Departments.find({_id: id});
 
 });
@@ -36,6 +35,11 @@ Meteor.publish('featuredServices', function(){
 Meteor.publish('singleService', function(id){
 	//role based security
 	return Services.find({_id: id});
+});
+
+Meteor.publish('departmentServices', function(department){
+	//role based security
+	return Services.find({department: department});
 });
 
 Meteor.publish('slugService', function(slug){
@@ -77,17 +81,6 @@ Meteor.publish('slugPage', function(slug){
 Meteor.publish('aboutPage', function(){
 	//role based security
 	return Pages.find({slug: 'about-us'});
-});
-
-//Staff
-Meteor.publish('allStaff', function(){
-	//role based security
-	return Staff.find();
-});
-
-Meteor.publish('singleStaff', function(id){
-	//role based security
-	return Staff.find({_id: id});
 });
 
 //Staff

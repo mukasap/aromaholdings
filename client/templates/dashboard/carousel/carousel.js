@@ -15,7 +15,7 @@ Template.adminCarouselEdit.events({
       Images.insert(fsFile, function(err, result){
         if(!err){
           var image = '/cfs/files/Images/' + result._id;
-          Carousel.update({_id: id}, {'$addToSet': {images: {image: image, caption: caption,  _id: result._id}}});
+          Carousel.update({_id: id}, {'$addToSet': {images: {image: image, _id: result._id}}});
         }
       });
     }
@@ -23,13 +23,13 @@ Template.adminCarouselEdit.events({
     e.target.caption.value = '';
     return false;
   },
-  'click .remove-image': function(){
-    var id = this._id;
-    //update BUG!!!!
+  'click .remove-image': function(e){
+    var id = Router.current().params._id;
+		//remove from carousel
     Carousel.update({_id: id}, {'$pull': {images:  {_id: this._id}}});
-    //remove image 
+    //remove image
     Images.remove({_id: this._id});
-    
+
     return false;
   }
 });
