@@ -34,7 +34,7 @@ cfs:standard-packages
 cfs:gridfs
 peerlibrary:urlify2
 
-fortawesome:fontawesome
+#fortawesome:fontawesome
 
 accounts-base
 accounts-password
